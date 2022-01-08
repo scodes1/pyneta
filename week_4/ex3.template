@@ -1,0 +1,19 @@
+Value INTERFACE (Ethernet\S+)
+Value int_state (\S+)
+Value admin_state (\S+)
+Value MAC (\S+)
+Value MTU (\S+)
+Value duplex (\S+-duplex)
+Value speed (\S+)
+
+
+
+Start
+  ^${INTERFACE}\s+\S+\s+${int_state}
+  ^admin state is ${admin_state}
+  ^  Hardware:  Ethernet, address: ${MAC}\s+.*$$
+  ^  MTU ${MTU}.*$$
+  ^\s+${duplex}, ${speed}.*$$ -> Record
+
+EOF
+
