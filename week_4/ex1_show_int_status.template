@@ -1,6 +1,10 @@
 Value PORT (\S+)
 
 Start
+  ^Port.*Type\s*$$ -> Ports
+
+Ports
   ^${PORT}.* -> Record
 
 EOF
+

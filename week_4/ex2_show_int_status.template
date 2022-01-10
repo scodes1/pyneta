@@ -6,6 +6,9 @@ Value SPEED (\S+)
 Value TYPE (\S+)
 
 Start
+  ^Port.*Type\s*$$ -> Ports
+
+Ports
   ^${PORT}\s+${STATUS}\s+${VLAN}\s+${DUPLEX}\s+${SPEED}\s+${TYPE} -> Record
 
 EOF

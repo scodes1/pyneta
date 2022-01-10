@@ -1,0 +1,15 @@
+Value Neighbor (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})
+Value Remote_AS (\S+)
+Value Up_Down (\S+)
+Value State_PrefixRcvd (\S+)
+Value Filldown Local_AS (\S+)
+Value Filldown BGP_Router_ID (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})
+
+Start
+  ^BGP router identifier ${BGP_Router_ID}, local AS number ${Local_AS}\s*$$
+  ^Neighbor.*PfxRcd\s*$$ -> ShowIPBgp
+
+ShowIPBgp
+  ^${Neighbor}\s+\S+\s+${Remote_AS}\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+${Up_Down}\s+${State_PrefixRcvd} -> Record
+
+EOF

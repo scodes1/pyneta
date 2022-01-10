@@ -1,0 +1,14 @@
+Value MAC_Addr (\S+)
+Value IP_Addr (\S+)
+Value Name (\S+)
+Value Interface (\S+)
+
+Start
+  ^MAC Address.*Flags.*$$ -> Data
+
+Data
+  ^${MAC_Addr}\s+${IP_Addr}\s+${Name}\s+${Interface} -> Record
+
+EOF
+
+
